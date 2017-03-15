@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { HelloWorldComponent } from './components/helloworld/helloworld.component';
+import { WeatherComponent } from './components/weather/weather.component';
 
 // So this guy describes the class that follows it
 @NgModule({
@@ -20,7 +21,8 @@ import { HelloWorldComponent } from './components/helloworld/helloworld.componen
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        HelloWorldComponent
+        HelloWorldComponent,
+        WeatherComponent
     ],
     imports: [  // What stuff do I need?
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -30,6 +32,7 @@ import { HelloWorldComponent } from './components/helloworld/helloworld.componen
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
             { path: 'hello-world', component: HelloWorldComponent },
+            { path: 'weather', component: WeatherComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],
