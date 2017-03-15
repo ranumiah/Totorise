@@ -19,6 +19,7 @@
     <Content Remove="ClientApp\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Controllers\GalleryController.cs" />
     <None Include="Controllers\WeatherController.cs" />
   </ItemGroup>
   <Target Name="RunWebpack" AfterTargets="ComputeFilesToPublish">
