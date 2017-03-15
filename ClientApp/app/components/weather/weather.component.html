@@ -1,5 +1,11 @@
 ﻿<h1>Weather check</h1>
 
+<label for="city">City</label>
+<!--The [(ngModel)] attribute indicates to Angular that it should bind whatever is typed into this textbox to a field called chosenCity.-->
+<input type="text" id="city" [(ngModel)]="chosenCity" />
+<!--By adding a (click) attribute to the button we indicate that any click of the button should call the getWeather method we defined in our weather component, passing in the chosenCity (which will always reflect the contents of the textbox)-->
+<input type="button" value="Get Weather" (click)="getWeather(chosenCity)" />
+
 <!--only render if weather is defined-->
 <div *ngIf="weather">
     <h3>Weather for {{weather.city}}</h3>

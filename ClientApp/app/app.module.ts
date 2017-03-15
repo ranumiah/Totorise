@@ -1,6 +1,8 @@
 // Angular Components
 import { NgModule } from '@angular/core';   // '@angular/core' ==> the exact location is in systems.config.js file
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 import { UniversalModule } from 'angular2-universal';
 
 // My Components
@@ -26,6 +28,7 @@ import { WeatherComponent } from './components/weather/weather.component';
     ],
     imports: [  // What stuff do I need?
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
+        FormsModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
