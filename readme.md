@@ -382,3 +382,39 @@ Global Node Package Installation
 
 npm i -g karma-cli
 npm i -g tslint
+
+
+
+
+JOHN PAPA
+==========
+
+## Example File Structure and Naming of Components/Services
+
+`
+index.html                      // Starting page
+  app/                            // Main app folder
+    main.ts                       // bootstrap here
+    app.component.css
+    app.component.html
+    app.component.ts              // Root component for the app (e.g. AppComponent)
+    heroes/                       // Feature folder
+      heroes.ts                   // Barrel module for the feature
+      heroes.component.ts         // Router component (e.g. HeroesComponent)
+      hero-list.component.css
+      hero-list.component.html
+      hero-list.component.ts      // list of heroes (e.g. HeroListComponent)
+      hero-detail.component.css
+      hero-detail.component.html
+      hero-detail.component.ts    // hero details  (e.g. HeroDetailComponent)
+      hero.service.ts             // A feature specific service  (e.g. HeroService)
+    shared/                       // Shared features across the app
+      shared.ts                   // Barrel module for shared features
+      logger.service.ts           // Example shared service (e.g. LoggerService)
+      spinner.component.ts        // Example shared component  (e.g. SpinnerComponent)
+      config.ts                   // Shared configuration
+`
+
+## Barrel
+
+A barrel is a module whose purpose in life is to aggregate other modules and export them. Why? Because this reduces the number of import statements you need to use the modules. To put it another way, if the Angular 2 team did not use barrels, you might have 100 import statements everywhere :) Thankfully, they use barrels such as angular2/core. In the example above, barrels are used to aggregate the heroes feature.
