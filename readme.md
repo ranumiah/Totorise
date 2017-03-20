@@ -13,6 +13,7 @@ Useful Commands
 
     NPM install
     Dotnet restore
+    webpack --config webpack.config.js
     webpack --config webpack.config.vendor.js
     MSbuild Totorise.sln /t:clean,rebuild
 
