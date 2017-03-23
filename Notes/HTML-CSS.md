@@ -682,4 +682,3 @@ Another option is to **contain the floats**. The outcomes of containing floats v
 To contain floats, the floated elements must reside within a parent element. The parent element will act as a container, leaving the flow of the document completely normal outside of it.
 
 ## Positioning with Inline-Block
-
