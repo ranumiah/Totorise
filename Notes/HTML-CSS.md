@@ -682,3 +682,80 @@ Another option is to **contain the floats**. The outcomes of containing floats v
 To contain floats, the floated elements must reside within a parent element. The parent element will act as a container, leaving the flow of the document completely normal outside of it.
 
 ## Positioning with Inline-Block
+
+In addition to using floats, another way we can position content is by using the display property in conjunction with the inline-block value. The inline-block method, as we’ll discuss, is primarily helpful for laying out pages or for placing elements next to one another within a line.
+
+Recall that the inline-block value for the display property will display elements within a line while allowing them to accept all box model properties, including height, width, padding, border, and margin. Using inline-block elements allows us to take full advantage of the box model without having to worry about clearing any floats.
+
+### Creating Reusable Layouts
+
+use inline-block elements to create the grid—or layout—of a page and to then use floats when I want content to wrap around a given element (as floats were intended to do with images)
+
+# Uniquely Positioning Elements
+
+very now and then we’ll want to precisely position an element, but floats or inline-block elements won’t do the trick. Floats, which remove an element from the flow of a page, often produce unwanted results as surrounding elements flow around the floated element. Inline-block elements, unless we’re creating columns, can be fairly awkward to get into the proper position. For these situations we can use the position property in connection with box offset properties.
+
+The position property identifies how an element is positioned on a page and whether or not it will appear within the normal flow of a document. This is used in conjunction with the box offset properties—top, right, bottom, and left—which identify exactly where an element will be positioned by moving elements in a number of different directions.
+
+By default every element has a position value of static, which means that it exists in the normal flow of a document and it doesn’t accept any box offset properties. The static value is most commonly overwritten with a relative or absolute value, which we’ll examine next.
+
+## Relative Positioning
+
+The relative value for the position property allows elements to appear within the normal flow a page, leaving space for an element as intended while not allowing other elements to flow around it; however, it also allows an element’s display position to be modified with the box offset properties. For example, consider the following HTML and CSS:
+
+```HTML
+<div>...</div>
+<div class="offset">...</div>
+<div>...</div>
+```
+```CSS
+div {
+  height: 100px;
+  width: 100px;
+}
+.offset {
+  left: 20px;
+  position: relative;
+  top: 20px;
+}
+```
+![](relative-positioning.png)
+
+The element with the class of offset, has a position value of relative and two box offset properties, left and top. This preserves the original position of the element, and other elements are not allowed to move into this space. Additionally, the box offset properties reposition the element, pushing it 20 pixels from the left and 20 pixels from the top of its original location.
+
+With relatively positioned elements, it’s important to know that the box offset properties identify where an element will be moved from given its original position. Thus, the left property with a value of 20 pixels will actually push the element towards the right, from the left, 20 pixels. The top property with a value of 20 pixels, then, will push an element towards the bottom, from the top, 20 pixels.
+
+When we position the element using the box offset properties, the element overlaps the element below it rather than moving that element down as the margin or padding properties would.
+
+## Absolute Positioning
+
+The absolute value for the position property is different from the relative value in that an element with a position value of absolute will not appear within the normal flow of a document, and the original space and position of the absolutely positioned element will not be preserved.
+
+Additionally, absolutely positioned elements are moved in relation to their closest relatively positioned parent element. Should a relatively positioned parent element not exist, the absolutely positioned element will be positioned in relation to the `<body>` element. That’s quite a bit of information; let’s take a look at how this works inside some code:
+
+```HTML
+<section>
+  <div class="offset">...</div>
+</section>
+```
+```CSS
+section {
+  position: relative;
+}
+div {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+```
+![](absoulte-positioning.png)
+
+In this example the `<section>` element is relatively positioned but doesn’t include any box offset properties. Consequently its position doesn’t change. The `<div>` element with a class of offset includes a position value of absolute. Because the `<section>` element is the closest relatively positioned parent element to the `<div>` element, the `<div>` element will be positioned in relation to the `<section>` element.
+
+With relatively positioned elements, the box offset properties identify in which direction an element would be moved in relation to itself. With absolutely positioned elements, the box offset properties identify in which direction an element will be moved in relation to its closest relatively positioned parent element.
+
+As a result of the right and top box offset properties, the `<div>` element will appear 20 pixels from the right and 20 pixels from the top of the `<section>`.
+
+Because the `<div>` element is absolutely positioned, it does not sit within the normal flow of the page and will overlap any surrounding elements. Additionally, the original position of the `<div>` is not preserved, and other elements are able to occupy that space.
+
+Typically, most positioning can be handled without the use of the position property and box offset properties, but in certain cases they can be extremely helpful.
